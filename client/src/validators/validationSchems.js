@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 import valid from 'card-validator';
 
-export default {
+const validationSchemas = {
   LoginSchem: yup.object().shape({
     email: yup.string().email('check email').required('required'),
     password: yup.string().test('test-password', 'min 6 symbols', (value) => (value && value.trim().length >= 6)).required('required'),
@@ -16,7 +16,7 @@ export default {
     role: yup.string().matches(/(customer|creator)/).required('Role is required'),
     agreeOfTerms: yup.boolean().oneOf([true], 'Must Accept Terms and Conditions').required('Must Accept Terms and Conditions'),
   }),
-  ContestSchem: yup.object({
+  ContestSchem: yup.object().shape({
     nameVenture: yup.string().min(3),
     contestType: yup.string().matches(/(name|tagline|logo)/).required(),
     title: yup.string().test('test-title', 'required', (value) => (value && value.trim().length >= 1)).required('title of contest required'),
@@ -30,7 +30,7 @@ export default {
     file: yup.mixed(),
   }),
   filterSchem: yup.object().shape({
-    typeIndex: yup.number().oneOf[1, 2, 3, 4, 5, 6, 7],
+    typeIndex: yup.number().oneOf([1, 2, 3, 4, 5, 6, 7]),
     contestId: yup.string(),
     awardSort: yup.string().matches(/(desc|asc)/),
     industry: yup.string(),
@@ -60,10 +60,12 @@ export default {
     displayName: yup.string().test('test-displayName', 'required', (value) => (value && value.trim().length >= 1)).required('required'),
     file: yup.mixed(),
   }),
-  MessageSchema: yup.object({
+  MessageSchema: yup.object().shape({
     message: yup.string().test('test-message', 'required', (value) => value && value.trim().length >= 1).required('required'),
   }),
-  CatalogSchema: yup.object({
+  CatalogSchema: yup.object().shape({
     catalogName: yup.string().test('test-catalogName', 'required', (value) => value && value.trim().length >= 1).required('required'),
   }),
 };
+
+export default validationSchemas;

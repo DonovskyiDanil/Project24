@@ -1,6 +1,6 @@
 import CONSTANTS from './constants';
 
-export default {
+const carouselConstants = {
   MAIN_SLIDER: 'MAIN_SLIDER',
   EXAMPLE_SLIDER: 'EXAMPLE_SLIDER',
   FEEDBACK_SLIDER: 'FEEDBACK_SLIDER',
@@ -112,6 +112,7 @@ export default {
                 + "I will definitely use your program again should we need to - and I've already let hundreds of my "
                 + 'LinkedIn connections know you all ROCK!',
     },
-
   ],
 };
+
+export default carouselConstants;

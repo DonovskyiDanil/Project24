@@ -9,13 +9,14 @@ const OptionalSelects = (props) => {
   if (props.isFetching) {
     return <Spinner />;
   }
+  
   switch (props.contestType) {
     case CONSTANTS.NAME_CONTEST: {
       return (
         <>
           <SelectInput
             name="typeOfName"
-            header="type of company"
+            header="Type of Company"
             classes={{
               inputContainer: styles.selectInputContainer,
               inputHeader: styles.selectHeader,
@@ -26,7 +27,7 @@ const OptionalSelects = (props) => {
           />
           <SelectInput
             name="styleName"
-            header="Style name"
+            header="Style Name"
             classes={{
               inputContainer: styles.selectInputContainer,
               inputHeader: styles.selectHeader,
@@ -48,7 +49,7 @@ const OptionalSelects = (props) => {
             <FormInput
               name="nameVenture"
               type="text"
-              label="name of venture"
+              label="Name of Venture"
               classes={{
                 container: styles.componentInputContainer,
                 input: styles.input,
@@ -58,13 +59,13 @@ const OptionalSelects = (props) => {
           </div>
           <SelectInput
             name="brandStyle"
+            header="Brand Style"
             classes={{
               inputContainer: styles.selectInputContainer,
               inputHeader: styles.selectHeader,
               selectInput: styles.select,
               warning: styles.warning,
             }}
-            header="Brand Style"
             optionsArray={props.dataForContest.data.brandStyle}
           />
         </>
@@ -80,7 +81,7 @@ const OptionalSelects = (props) => {
             <FormInput
               name="nameVenture"
               type="text"
-              label="name of venture"
+              label="Name of Venture"
               classes={{
                 container: styles.componentInputContainer,
                 input: styles.input,
@@ -90,17 +91,20 @@ const OptionalSelects = (props) => {
           </div>
           <SelectInput
             name="typeOfTagline"
+            header="Type Tagline"
             classes={{
               inputContainer: styles.selectInputContainer,
               inputHeader: styles.selectHeader,
               selectInput: styles.select,
               warning: styles.warning,
             }}
-            header="Type tagline"
             optionsArray={props.dataForContest.data.typeOfTagline}
           />
         </>
       );
+    }
+    default: {
+      return <div>Invalid contest type</div>;
     }
   }
 };

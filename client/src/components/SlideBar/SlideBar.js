@@ -24,6 +24,8 @@ const SliderBar = (props) => {
         return style.exampleCarousel;
       case carouselConstants.FEEDBACK_SLIDER:
         return style.feedbackCarousel;
+      default:
+        return style.defaultCarousel; 
     }
   };
 
@@ -46,7 +48,6 @@ const SliderBar = (props) => {
             <img src={props.images[key]} alt="slide" />
             <p>{carouselConstants.EXAMPLE_SLIDER_TEXT[index]}</p>
           </div>
-
         ));
       }
       case carouselConstants.FEEDBACK_SLIDER: {
@@ -58,8 +59,12 @@ const SliderBar = (props) => {
           </div>
         ));
       }
+      default: {
+        return <div>No slides available</div>; 
+      }
     }
   };
+
   return (
     <Flickity
       className={getStyleName()}
@@ -67,8 +72,8 @@ const SliderBar = (props) => {
       options={options}
     >
       {
-                renderSlides()
-            }
+        renderSlides()
+      }
     </Flickity>
   );
 };

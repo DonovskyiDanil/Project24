@@ -5,12 +5,13 @@ const NotificationController = require('./controllers/sockets/NotificationContro
 let notificationController;
 let chatController;
 
-const cors = {
-  origin: '*',
+const corsOptions = {
+  origin: '*', // Разрешаем все источники
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
 };
 
 module.exports.createConnection = (httpServer) => {
-  const io = new Server(httpServer, { cors });
+  const io = new Server(httpServer, { cors: corsOptions });
   notificationController = new NotificationController();
   notificationController.connect('/notifications', io);
   chatController = new ChatController();
