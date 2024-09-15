@@ -6,9 +6,11 @@ let notificationController;
 let chatController;
 
 const corsOptions = {
-  origin: '*', // Разрешаем все источники
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  origin: ['http://localhost:3000', 'http://localhost:5000', 'http://localhost:5001'],
+  methods: ['GET', 'POST'],
+  credentials: true,
 };
+
 
 module.exports.createConnection = (httpServer) => {
   const io = new Server(httpServer, { cors: corsOptions });

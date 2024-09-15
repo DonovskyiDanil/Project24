@@ -6,14 +6,13 @@ const router = require('./router');
 const controller = require('./socketInit');
 const handlerError = require('./handlerError/handler');
 
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 4000;
 const app = express();
 
-// Настройка CORS для всех источников
+// Настройка CORS для разрешения запросов с двух портов: 3000 и 5000
 app.use(cors({
-  origin: '*', // Разрешаем все источники
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  origin: ['http://localhost:3000', 'http://localhost:5000', 'http://localhost:5001'],
+  credentials: true, // Разрешаем передачу куков, если нужно
 }));
 
 app.use(express.json());
